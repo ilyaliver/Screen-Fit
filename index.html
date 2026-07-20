@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Screen Fit — подбор экрана под GUI-окно</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <h1 class="page__title">Screen Fit</h1>
+      <p class="page__subtitle">
+        Потяните за углы или стороны квадрата, чтобы задать размеры
+        будущего GUI-окна. Ниже — проверка по устройствам.
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="sizerTitle">
+      <h2 id="sizerTitle" class="card__title">Размеры вашего окна</h2>
+
+      <div class="sizer" id="sizer" aria-label="Растягиваемый квадрат окна">
+        <div class="sizer__hint" id="sizerHint">
+          Потяните за ручки, чтобы задать размер
+        </div>
+
+        <div class="sizer__window" id="window">
+          <div class="sizer__readout" id="readout">800 × 600</div>
+
+          <!-- 4 угла -->
+          <span class="handle handle--nw" data-handle="nw" tabindex="0" role="button" aria-label="Северо-запад"></span>
+          <span class="handle handle--ne" data-handle="ne" tabindex="0" role="button" aria-label="Северо-восток"></span>
+          <span class="handle handle--sw" data-handle="sw" tabindex="0" role="button" aria-label="Юго-запад"></span>
+          <span class="handle handle--se" data-handle="se" tabindex="0" role="button" aria-label="Юго-восток"></span>
+          <!-- 4 стороны -->
+          <span class="handle handle--n" data-handle="n" tabindex="0" role="button" aria-label="Север"></span>
+          <span class="handle handle--e" data-handle="e" tabindex="0" role="button" aria-label="Восток"></span>
+          <span class="handle handle--s" data-handle="s" tabindex="0" role="button" aria-label="Юг"></span>
+          <span class="handle handle--w" data-handle="w" tabindex="0" role="button" aria-label="Запад"></span>
+        </div>
+      </div>
+
+      <div class="sizer__controls">
+        <button id="resetBtn" class="button" type="button">Сбросить 619×264</button>
+        <span class="sizer__note" id="sizerNote">Размер задаётся в пикселях дизайн-макета.</span>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="summaryTitle">
+      <h2 id="summaryTitle" class="card__title">Сводка</h2>
+      <div id="summary" class="summary">
+        <div class="summary__metric">
+          <div class="summary__label">Ваше окно</div>
+          <div class="summary__value" id="summaryWindow">800 × 600 px</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__label">Площадь окна</div>
+          <div class="summary__value" id="summaryArea">480 000 px²</div>
+        </div>
+        <div class="summary__metric">
+          <div class="summary__label">Устройств, куда помещается</div>
+          <div class="summary__value" id="summaryFit">— из —</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="resultsTitle">
+      <h2 id="resultsTitle" class="card__title">Проверка по устройствам</h2>
+      <div class="legend">
+        <span class="legend__item legend__item--ok">Помещается с запасом</span>
+        <span class="legend__item legend__item--tight">Помещается впритык</span>
+        <span class="legend__item legend__item--no">Не помещается</span>
+      </div>
+      <div id="results" class="results" aria-live="polite">
+        <!-- Карточки устройств генерируются скриптом -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
